@@ -5,6 +5,7 @@ const RETRY_DELAY_MS = 3000;
 
 /**
  * Connect to MongoDB with exponential backoff retry logic.
+ * If all retries fail, logs a warning and lets the server continue.
  * @param {string} uri - MongoDB connection string
  */
 async function connectDB(uri) {
@@ -26,8 +27,8 @@ async function connectDB(uri) {
             );
 
             if (attempt === MAX_RETRIES) {
-                console.error('[db] All connection attempts exhausted. Exiting.');
-                process.exit(1);
+                console.warn('[db] All attempts exhausted. Server will run without DB — DB features disabled.');
+                return;
             }
 
             const delay = RETRY_DELAY_MS * Math.pow(2, attempt - 1);
