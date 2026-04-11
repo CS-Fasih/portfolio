@@ -8,7 +8,7 @@ This guide deploys the portfolio as **two separate Heroku apps**: an API backend
 
 - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed and authenticated
 - MongoDB Atlas cluster with a connection string
-- NVIDIA API key from [build.nvidia.com](https://build.nvidia.com)
+- Groq API key from [console.groq.com](https://console.groq.com)
 - GitHub personal access token (repo:read scope)
 
 ---
@@ -27,7 +27,7 @@ heroku create fasih-portfolio-api
 heroku config:set -a fasih-portfolio-api \
   NODE_ENV=production \
   MONGODB_URI="mongodb+srv://<user>:<pass>@cluster.mongodb.net/portfolio?retryWrites=true&w=majority" \
-  NVIDIA_API_KEY="nvapi-..." \
+  GROQ_API_KEY="gsk_..." \
   GITHUB_USERNAME="CS-Fasih" \
   GITHUB_TOKEN="ghp_..." \
   GITHUB_WEBHOOK_SECRET="your-webhook-secret" \

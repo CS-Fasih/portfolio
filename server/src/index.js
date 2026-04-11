@@ -56,7 +56,7 @@ async function startServer() {
 
     // Initialize services
     await connectDB(config.mongoUri);
-    initLLMClient(config.nvidiaApiKey);
+    initLLMClient(config.groqApiKey);
     initGitHubClient(config.githubToken, config.githubUsername);
     initEmailService();
 

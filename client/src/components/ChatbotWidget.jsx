@@ -52,7 +52,7 @@ function ChatbotWidget() {
                     <div className="chatbot-header">
                         <div className="chatbot-header-info">
                             <h4>Ask about Fasih's work</h4>
-                            <span>Powered by Llama 3.1 70B</span>
+                            <span>Powered by Llama 3.1 · Groq</span>
                         </div>
                     </div>
 

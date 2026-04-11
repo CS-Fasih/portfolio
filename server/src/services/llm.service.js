@@ -1,26 +1,26 @@
 const OpenAI = require('openai');
 
-const NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1';
-const MODEL = 'meta/llama-3.1-70b-instruct';
+const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
+const MODEL = 'llama-3.1-70b-versatile';
 
 let client = null;
 
 /**
- * Initialize the NVIDIA NIM OpenAI-compatible client.
- * @param {string} apiKey - NVIDIA API key
+ * Initialize the Groq OpenAI-compatible client.
+ * @param {string} apiKey - Groq API key
  */
 function initLLMClient(apiKey) {
     if (!apiKey) {
-        console.warn('[llm] No NVIDIA_API_KEY provided. Chat features disabled.');
+        console.warn('[llm] No GROQ_API_KEY provided. Chat features disabled.');
         return;
     }
 
     client = new OpenAI({
-        baseURL: NVIDIA_BASE_URL,
+        baseURL: GROQ_BASE_URL,
         apiKey: apiKey,
     });
 
-    console.log('[llm] NVIDIA NIM client initialized.');
+    console.log('[llm] Groq client initialized.');
 }
 
 /**
@@ -31,7 +31,7 @@ function initLLMClient(apiKey) {
  */
 async function createChatStream(systemPrompt, conversationHistory) {
     if (!client) {
-        throw new Error('LLM client not initialized. Check NVIDIA_API_KEY.');
+        throw new Error('LLM client not initialized. Check GROQ_API_KEY.');
     }
 
     try {

@@ -3,7 +3,7 @@ dotenv.config();
 
 const requiredVars = [
     'MONGODB_URI',
-    'NVIDIA_API_KEY',
+    'GROQ_API_KEY',
     'GITHUB_USERNAME',
     'GITHUB_TOKEN',
 ];
@@ -24,7 +24,7 @@ function validateEnv() {
     return {
         port: parseInt(process.env.PORT, 10) || 5000,
         mongoUri: process.env.MONGODB_URI,
-        nvidiaApiKey: process.env.NVIDIA_API_KEY,
+        groqApiKey: process.env.GROQ_API_KEY,
         githubUsername: process.env.GITHUB_USERNAME,
         githubToken: process.env.GITHUB_TOKEN,
         githubWebhookSecret: process.env.GITHUB_WEBHOOK_SECRET || '',
