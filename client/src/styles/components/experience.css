@@ -1,0 +1,26 @@
+/* ============================================
+   EXPERIENCE — Same timeline as Education
+   ============================================ */
+
+/* Uses .timeline styles from education.css */
+
+.experience-highlights {
+    margin-top: 1rem;
+}
+
+.experience-highlights li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.experience-highlights li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
