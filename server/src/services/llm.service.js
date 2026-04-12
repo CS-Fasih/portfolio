@@ -1,7 +1,7 @@
 const OpenAI = require('openai');
 
 const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
-const MODEL = 'llama-3.1-70b-versatile';
+const MODEL = 'llama-3.3-70b-versatile';
 
 let client = null;
 

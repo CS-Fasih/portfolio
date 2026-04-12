@@ -19,6 +19,7 @@ async function startServer() {
     const app = express();
 
     // Security & logging
+    app.set('trust proxy', 1);
     app.use(helmet());
 
     if (config.nodeEnv !== 'production') {
