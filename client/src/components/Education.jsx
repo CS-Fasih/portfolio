@@ -25,6 +25,7 @@ function Education() {
                                     <span className="timeline-date">{entry.period}</span>
                                     <h3>{entry.degree}</h3>
                                     <h4>{entry.institution}</h4>
+                                    {entry.rollNo && <span className="timeline-rollno">{entry.rollNo}</span>}
                                     <p>{entry.description}</p>
                                     {entry.coursework.length > 0 && (
                                         <div className="coursework">

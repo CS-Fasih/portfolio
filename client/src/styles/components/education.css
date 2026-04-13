@@ -70,6 +70,15 @@
     font-weight: 400;
     color: var(--text-secondary);
     font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-rollno {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+    display: block;
     margin-bottom: 0.75rem;
 }
 

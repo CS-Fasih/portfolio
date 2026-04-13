@@ -78,11 +78,6 @@ function Contact() {
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
                                 </a>
 
-                                {/* LinkedIn */}
-                                <a href={ownerInfo.linkedin} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
-                                </a>
-
                                 {/* Fiverr */}
                                 <a href={ownerInfo.fiverr} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Fiverr">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.86.41-.86.96v1.752h1.71v1.693h-1.71v4.627h-2.004v-4.627h-.86v-1.693h.86v-1.89c0-1.243.872-2.49 2.33-2.49.648 0 1.04.16 1.04.16l-.352 1.527s-.26-.09-.534-.09c-.397 0-.71.26-.71.68v.053h1.94v-.66zm-5.263 0h-1.803v8.072h2.004v-4.627h.79v-1.693h-.79V16.09c0-.283.183-.412.412-.412h.59v-1.852s-.353-.089-.698-.089c-.916 0-1.697.61-1.697 1.692v.453zm-3.483 0h2.004v8.072h-2.004v-8.072zm-4.333 2.696v5.376H6.925v-5.11c0-.276-.187-.406-.411-.406-.224 0-.41.13-.41.406v5.11H4.1v-5.11c0-.276-.187-.406-.41-.406-.224 0-.412.13-.412.406v5.11H1.274v-5.376c0-1.133.81-1.753 1.88-1.753.638 0 1.196.282 1.48.74.34-.478.87-.74 1.47-.74 1.07 0 1.882.62 1.882 1.753z" /></svg>

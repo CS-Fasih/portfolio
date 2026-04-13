@@ -7,9 +7,8 @@ export const ownerInfo = {
     name: 'Muhammad Fasih',
     title: 'AI/ML Engineer & Full-Stack Developer',
     tagline: 'Building intelligent systems at the intersection of AI and the web.',
-    email: 'YOUR_EMAIL',
-    github: 'https://github.com/YOUR_GITHUB_USERNAME',
-    linkedin: 'YOUR_LINKEDIN_URL',
+    email: 'muhammadfasihofficial@proton.me',
+    github: 'https://github.com/CS-Fasih',
     fiverr: 'https://www.fiverr.com/cs_fasih',
     location: 'Karachi, Pakistan',
 };
@@ -38,7 +37,8 @@ export const education = [
     {
         degree: 'BS Computer Science',
         institution: 'Dawood University of Engineering & Technology, Karachi',
-        period: '2022 — 2026',
+        rollNo: '22F-BSCS-19',
+        period: '2022 — May 2026',
         description: 'Final year project: GeoExtract — satellite-based building detection using YOLOv11x-seg.',
         coursework: [
             'Machine Learning',
@@ -52,14 +52,14 @@ export const education = [
     },
     {
         degree: 'Intermediate (FSc Pre-Engineering)',
-        institution: 'Your College Name — Karachi',
+        institution: 'Govt Degree College Buffer Zone — Karachi',
         period: '2020 — 2022',
         description: 'Pre-engineering track with focus on mathematics and physics.',
         coursework: [],
     },
     {
         degree: 'Matriculation (SSC)',
-        institution: 'Your School Name — Karachi',
+        institution: 'IHA Secondary School — Karachi',
         period: '2018 — 2020',
         description: 'Science track with distinction.',
         coursework: [],
@@ -129,7 +129,7 @@ export const featuredProject = {
     description:
         'YOLOv11x-seg satellite building detection API — deployed on Modal.com. Detects individual buildings from high-resolution satellite imagery using SAHI-based tiled inference with advanced NMS post-processing.',
     tech: ['YOLOv11', 'Python', 'FastAPI', 'Modal', 'SAHI', 'OpenCV'],
-    github: 'https://github.com/YOUR_GITHUB_USERNAME/GeoExtract',
+    github: 'https://github.com/CS-Fasih/GeoExtract',
     live: '',
 };
 
@@ -138,21 +138,21 @@ export const projects = [
         name: 'CineGraph',
         description: 'Movie recommendation engine with graph-based collaborative filtering.',
         tech: ['Python', 'Neo4j', 'FastAPI', 'React'],
-        github: 'https://github.com/YOUR_GITHUB_USERNAME/CineGraph',
+        github: 'https://github.com/CS-Fasih/CineGraph',
         live: '',
     },
     {
         name: 'MNIDS',
         description: 'ML-based network intrusion detection system with real-time traffic analysis.',
         tech: ['Python', 'Scikit-Learn', 'Scapy', 'Flask'],
-        github: 'https://github.com/YOUR_GITHUB_USERNAME/MNIDS',
+        github: 'https://github.com/CS-Fasih/MNIDS',
         live: '',
     },
     {
         name: 'Kartevo',
         description: 'Full-stack e-commerce platform with role-based access and payment integration.',
         tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        github: 'https://github.com/YOUR_GITHUB_USERNAME/Kartevo',
+        github: 'https://github.com/CS-Fasih/Kartevo',
         live: '',
     },
 ];
@@ -168,16 +168,6 @@ export const experience = [
             'Developed full-stack web applications with React, Node.js, and MongoDB',
             'Maintained 5-star rating with consistent on-time delivery',
             'Specialized in data preprocessing, model training, and API deployment',
-        ],
-    },
-    {
-        role: 'Internship',
-        company: 'Your Company — Karachi',
-        period: 'Month Year — Month Year',
-        description: 'Placeholder — update with your internship details.',
-        highlights: [
-            'Placeholder task 1',
-            'Placeholder task 2',
         ],
     },
 ];
