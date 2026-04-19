@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { heroTitles, ownerInfo } from '../data/portfolio';
 import '../styles/components/hero.css';
 

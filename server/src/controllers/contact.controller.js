@@ -17,6 +17,15 @@ async function handleContact(req, res) {
             });
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                success: false,
+                data: null,
+                message: 'Invalid email format.',
+            });
+        }
+
         const contactMsg = await ContactMessage.create({
             name: name.trim(),
             email: email.trim(),

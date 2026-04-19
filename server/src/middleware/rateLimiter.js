@@ -16,4 +16,20 @@ const chatRateLimiter = rateLimit({
     },
 });
 
-module.exports = { chatRateLimiter };
+/**
+ * Rate limiter for the contact endpoint.
+ * 5 requests per IP per hour.
+ */
+const contactRateLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 5,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        success: false,
+        data: null,
+        message: 'Too many contact requests. Please try again later.',
+    },
+});
+
+module.exports = { chatRateLimiter, contactRateLimiter };

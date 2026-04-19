@@ -7,7 +7,7 @@ import '../styles/components/chatbot.css';
  */
 function ChatbotWidget() {
     const [isOpen, setIsOpen] = useState(false);
-    const { messages, isLoading, error, sendMessage, clearChat } = useChatbot();
+    const { messages, isLoading, error, sendMessage } = useChatbot();
     const [input, setInput] = useState('');
     const messagesEndRef = useRef(null);
 
