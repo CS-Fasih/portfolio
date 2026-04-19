@@ -70,7 +70,6 @@ export function useChatbot() {
                 const decoder = new TextDecoder();
 
                 // Add empty bot message that we'll stream into
-                const botMsgIndex = messages.length + 1; // +1 for the userMsg we just added
                 setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
                 let buffer = '';
