@@ -113,7 +113,7 @@ function Projects() {
                 <ScrollAnimator>
                     <div className="projects-cta">
                         <a
-                            href="https://github.com/YOUR_GITHUB_USERNAME"
+                            href="https://github.com/CS-Fasih?tab=repositories"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-outline"
