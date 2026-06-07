@@ -1,6 +1,10 @@
 const { getCachedRepos } = require('../services/github.service');
 const { createChatStream } = require('../services/llm.service');
 
+let cachedRepoContext = null;
+let cacheExpiration = 0;
+const CACHE_TTL = 1000 * 60 * 60; // 1 hour
+
 /**
  * POST /api/chat
  * Handles chat messages with streaming SSE response.
@@ -20,14 +24,20 @@ async function handleChat(req, res) {
         }
 
         // Build context from cached repos
-        const repos = await getCachedRepos();
         let repoContext = '';
 
-        for (const repo of repos) {
-            const readmeSnippet = repo.readme
-                ? repo.readme.substring(0, 800)
-                : '(no README)';
-            repoContext += `\n--- ${repo.repoName} ---\nURL: ${repo.repoUrl}\nDescription: ${repo.description || 'N/A'}\nTopics: ${(repo.topics || []).join(', ') || 'N/A'}\nREADME:\n${readmeSnippet}\n`;
+        if (cachedRepoContext !== null && Date.now() < cacheExpiration) {
+            repoContext = cachedRepoContext;
+        } else {
+            const repos = await getCachedRepos();
+            for (const repo of repos) {
+                const readmeSnippet = repo.readme
+                    ? repo.readme.substring(0, 800)
+                    : '(no README)';
+                repoContext += `\n--- ${repo.repoName} ---\nURL: ${repo.repoUrl}\nDescription: ${repo.description || 'N/A'}\nTopics: ${(repo.topics || []).join(', ') || 'N/A'}\nREADME:\n${readmeSnippet}\n`;
+            }
+            cachedRepoContext = repoContext;
+            cacheExpiration = Date.now() + CACHE_TTL;
         }
 
         const systemPrompt = `You are the AI assistant on Muhammad Fasih's portfolio website.
