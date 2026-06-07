@@ -33,7 +33,9 @@ async function handleContact(req, res) {
         });
 
         // Attempt email notification (non-blocking)
-        sendContactNotification({ name, email, message }).catch(() => { });
+        sendContactNotification({ name, email, message }).catch((err) => {
+            console.error(`[contact] Background email notification failed: ${err.message}`);
+        });
 
         res.status(201).json({
             success: true,
