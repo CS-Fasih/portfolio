@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import ScrollAnimator from './ScrollAnimator';
-import { featuredProject, projects as staticProjects } from '../data/portfolio';
+import { featuredProject, projects } from '../data/portfolio';
 import { fetchGitHubRepos } from '../services/api';
 import '../styles/components/projects.css';
 
@@ -30,16 +30,20 @@ function Projects() {
     }, []);
 
     // Merge live repos with static projects — prefer static for curated display
-    const displayProjects = staticProjects.map((proj) => {
-        const live = liveRepos.find(
-            (r) => r.name.toLowerCase() === proj.name.toLowerCase()
+    const displayProjects = useMemo(() => {
+        const liveReposMap = new Map(
+            liveRepos.map((r) => [r.name.toLowerCase(), r])
         );
-        return {
-            ...proj,
-            description: live?.description || proj.description,
-            github: live?.url || proj.github,
-        };
-    });
+
+        return projects.map((proj) => {
+            const live = liveReposMap.get(proj.name.toLowerCase());
+            return {
+                ...proj,
+                description: live?.description || proj.description,
+                github: live?.url || proj.github,
+            };
+        });
+    }, [liveRepos]);
 
     return (
         <section id="projects" className="section">
