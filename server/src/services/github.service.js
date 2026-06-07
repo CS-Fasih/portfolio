@@ -60,24 +60,30 @@ async function syncAllRepos() {
 
         let synced = 0;
 
-        for (const repo of repos) {
-            const readme = await fetchReadme(githubUsername, repo.name);
+        const syncPromises = repos.map(async (repo) => {
+            try {
+                const readme = await fetchReadme(githubUsername, repo.name);
 
-            await RepoCache.findOneAndUpdate(
-                { repoName: repo.name },
-                {
-                    repoName: repo.name,
-                    repoUrl: repo.html_url,
-                    description: repo.description || '',
-                    topics: repo.topics || [],
-                    readme,
-                    lastSynced: new Date(),
-                },
-                { upsert: true, new: true }
-            );
+                await RepoCache.findOneAndUpdate(
+                    { repoName: repo.name },
+                    {
+                        repoName: repo.name,
+                        repoUrl: repo.html_url,
+                        description: repo.description || '',
+                        topics: repo.topics || [],
+                        readme,
+                        lastSynced: new Date(),
+                    },
+                    { upsert: true, new: true }
+                );
 
-            synced++;
-        }
+                synced++;
+            } catch (repoErr) {
+                console.error(`[github] Error syncing repo ${repo.name}: ${repoErr.message}`);
+            }
+        });
+
+        await Promise.all(syncPromises);
 
         console.log(`[github] Synced ${synced} repositories.`);
     } catch (err) {
