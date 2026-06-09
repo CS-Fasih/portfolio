@@ -45,9 +45,12 @@ export function useChatbot() {
             setIsLoading(true);
 
             // Build conversation history for API (exclude the greeting if it's the system one)
-            const conversationHistory = messages
-                .filter((m) => m.role === 'user' || m.role === 'assistant')
-                .map((m) => ({ role: m.role, content: m.content }));
+            const conversationHistory = messages.reduce((acc, m) => {
+                if (m.role === 'user' || m.role === 'assistant') {
+                    acc.push({ role: m.role, content: m.content });
+                }
+                return acc;
+            }, []);
 
             try {
                 abortControllerRef.current = new AbortController();
