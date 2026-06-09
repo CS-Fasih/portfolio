@@ -1,4 +1,4 @@
-const { getCachedRepos } = require('../services/github.service');
+const { getCachedRepoContext } = require('../services/github.service');
 const { createChatStream } = require('../services/llm.service');
 
 /**
@@ -20,15 +20,7 @@ async function handleChat(req, res) {
         }
 
         // Build context from cached repos
-        const repos = await getCachedRepos();
-        let repoContext = '';
-
-        for (const repo of repos) {
-            const readmeSnippet = repo.readme
-                ? repo.readme.substring(0, 800)
-                : '(no README)';
-            repoContext += `\n--- ${repo.repoName} ---\nURL: ${repo.repoUrl}\nDescription: ${repo.description || 'N/A'}\nTopics: ${(repo.topics || []).join(', ') || 'N/A'}\nREADME:\n${readmeSnippet}\n`;
-        }
+        const repoContext = await getCachedRepoContext();
 
         const systemPrompt = `You are the AI assistant on Muhammad Fasih's portfolio website.
 You have deep knowledge of Fasih's projects from his GitHub repositories.
