@@ -1,4 +1,4 @@
-const { syncAllRepos, syncSingleRepo, getCachedRepos } = require('../services/github.service');
+const { syncSingleRepo, getCachedRepos } = require('../services/github.service');
 
 /**
  * GET /api/github/repos
