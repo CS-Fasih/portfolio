@@ -4,6 +4,7 @@ const RepoCache = require('../models/RepoCache.model');
 
 let octokit = null;
 let githubUsername = '';
+let memoizedRepoContext = null;
 
 /**
  * Initialize Octokit client.
@@ -80,6 +81,9 @@ async function syncAllRepos() {
         }
 
         console.log(`[github] Synced ${synced} repositories.`);
+
+        // Invalidate cache
+        memoizedRepoContext = null;
     } catch (err) {
         console.error(`[github] Sync error: ${err.message}`);
     }
@@ -114,6 +118,9 @@ async function syncSingleRepo(repoName) {
         );
 
         console.log(`[github] Synced repo: ${repoName}`);
+
+        // Invalidate cache
+        memoizedRepoContext = null;
     } catch (err) {
         console.error(`[github] Error syncing ${repoName}: ${err.message}`);
     }
@@ -144,10 +151,32 @@ async function getCachedRepos() {
     }
 }
 
+/**
+ * Get the memoized context string of all repos.
+ * @returns {string} The formatted repo context string
+ */
+async function getCachedRepoContext() {
+    if (memoizedRepoContext !== null) {
+        return memoizedRepoContext;
+    }
+
+    const repos = await getCachedRepos();
+    let repoContext = '';
+    for (const repo of repos) {
+        const readmeSnippet = repo.readme
+            ? repo.readme.substring(0, 800)
+            : '(no README)';
+        repoContext += `\n--- ${repo.repoName} ---\nURL: ${repo.repoUrl}\nDescription: ${repo.description || 'N/A'}\nTopics: ${(repo.topics || []).join(', ') || 'N/A'}\nREADME:\n${readmeSnippet}\n`;
+    }
+    memoizedRepoContext = repoContext;
+    return memoizedRepoContext;
+}
+
 module.exports = {
     initGitHubClient,
     syncAllRepos,
     syncSingleRepo,
     startPeriodicSync,
     getCachedRepos,
+    getCachedRepoContext,
 };
