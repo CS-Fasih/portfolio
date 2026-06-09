@@ -16,7 +16,8 @@ export function useChatbot() {
         try {
             const saved = sessionStorage.getItem(STORAGE_KEY);
             return saved ? JSON.parse(saved) : [GREETING];
-        } catch {
+        } catch (error) {
+            console.error('Failed to read chat history from sessionStorage:', error);
             return [GREETING];
         }
     });
@@ -29,8 +30,9 @@ export function useChatbot() {
     useEffect(() => {
         try {
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-        } catch {
+        } catch (error) {
             // Storage full or unavailable
+            console.error('Failed to save chat history to sessionStorage:', error);
         }
     }, [messages]);
 
@@ -110,8 +112,9 @@ export function useChatbot() {
                                 if (parsed.error) {
                                     setError(parsed.error);
                                 }
-                            } catch {
+                            } catch (error) {
                                 // Skip malformed JSON
+                                console.error('Failed to parse SSE message data:', error, data);
                             }
                         }
                     }
