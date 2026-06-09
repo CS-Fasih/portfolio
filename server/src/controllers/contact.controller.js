@@ -33,7 +33,11 @@ async function handleContact(req, res) {
         });
 
         // Attempt email notification (non-blocking)
-        sendContactNotification({ name, email, message }).catch(() => { });
+        sendContactNotification({ name, email, message })
+            .then((sent) => {
+                if (!sent) console.warn(`[contact] Background email notification was skipped/failed for message ${contactMsg._id}`);
+            })
+            .catch((err) => console.error(`[contact] Background email notification errored: ${err?.message || err}`));
 
         res.status(201).json({
             success: true,
